@@ -1,0 +1,4 @@
+infodoc
+=======
+
+InfoDoc web application.
