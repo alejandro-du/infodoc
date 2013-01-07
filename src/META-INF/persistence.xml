@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="infodoc">
+		<class>infodoc.core.dto.Activity</class>
+		<class>infodoc.core.dto.ActivityInstance</class>
+		<class>infodoc.core.dto.AuditLog</class>
+		<class>infodoc.core.dto.Classification</class>
+		<class>infodoc.core.dto.ClassificationValue</class>
+		<class>infodoc.core.dto.HqlReport</class>
+		<class>infodoc.core.dto.HqlReportParameter</class>
+		<class>infodoc.core.dto.JavaReport</class>
+		<class>infodoc.core.dto.Notification</class>
+		<class>infodoc.core.dto.NotificationInstance</class>
+		<class>infodoc.core.dto.Numeration</class>
+		<class>infodoc.core.dto.Process</class>
+		<class>infodoc.core.dto.ProcessInstance</class>
+		<class>infodoc.core.dto.Property</class>
+		<class>infodoc.core.dto.PropertyValue</class>
+		<class>infodoc.core.dto.User</class>
+		<class>infodoc.core.dto.UserGroup</class>
+		<class>infodoc.core.dto.Validation</class>
+	</persistence-unit>
+</persistence>

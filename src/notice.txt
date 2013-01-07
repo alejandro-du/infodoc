@@ -1,0 +1,9 @@
+This package contains third party software/files. You must accept Aditional
+Terms and Conditions for third party components included within
+this file, including, but not limited to:
+
+1. Icons from:
+	http://findicons.com
+	http://sixrevisions.com/resources/40-beautiful-free-icon-sets/
+	http://sublink.ca/icons/sweetieplus/
+	http://www.famfamfam.com/lab/icons/silk/
