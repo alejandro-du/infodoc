@@ -1,9 +1,9 @@
-package infodoc.ui.comun;
+package infodoc.ui.common;
 
 import infodoc.core.InfodocConstants;
 import infodoc.core.container.InfodocContainerFactory;
 import infodoc.core.dto.User;
-import infodoc.core.ui.comun.InfodocMainWindow;
+import infodoc.core.ui.common.InfodocMainWindow;
 
 import java.io.Serializable;
 import java.util.ArrayList;

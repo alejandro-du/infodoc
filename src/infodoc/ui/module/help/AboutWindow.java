@@ -1,7 +1,7 @@
 package infodoc.ui.module.help;
 
 import infodoc.core.InfodocConstants;
-import infodoc.core.ui.comun.InfodocTheme;
+import infodoc.core.ui.common.InfodocTheme;
 
 import com.vaadin.terminal.ThemeResource;
 import com.vaadin.ui.Embedded;

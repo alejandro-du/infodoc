@@ -1,4 +1,4 @@
-package infodoc.ui.comun;
+package infodoc.ui.common;
 
 import infodoc.core.InfodocConstants;
 import infodoc.core.container.InfodocContainerFactory;
@@ -34,7 +34,7 @@ public class Bootstrap {
 		userGroup.setAccessAuditLog(true);
 		
 		userGroup.setAccesoConfigModule(true);
-		userGroup.setAccessConfigProcesses(true);
+		userGroup.setAccessConfigForms(true);
 		userGroup.setAccessConfigNumeration(true);
 		userGroup.setAccessConfigProperties(true);
 		userGroup.setAccessConfigValidations(true);

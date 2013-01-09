@@ -3,7 +3,7 @@ package infodoc.ui.module.admin;
 import infodoc.core.InfodocConstants;
 import infodoc.core.container.InfodocContainerFactory;
 import infodoc.core.dto.PropertyValue;
-import infodoc.core.dto.ProcessInstance;
+import infodoc.core.dto.Case;
 import infodoc.core.dto.AuditLog;
 import infodoc.core.dto.JavaReport;
 import infodoc.core.dto.HqlReport;
@@ -11,8 +11,8 @@ import infodoc.core.dto.NotificationInstance;
 import infodoc.core.dto.ActivityInstance;
 import infodoc.core.dto.User;
 import infodoc.core.dto.UserGroup;
-import infodoc.core.ui.comun.InfodocModule;
-import infodoc.core.ui.comun.InfodocTheme;
+import infodoc.core.ui.common.InfodocModule;
+import infodoc.core.ui.common.InfodocTheme;
 import infodoc.core.ui.fieldfactory.InfodocFieldFactory;
 
 import java.util.Date;
@@ -35,7 +35,7 @@ public class AdminModule extends InfodocModule implements Command {
 	private static final long serialVersionUID = 1L;
 	private MenuItem userGroupsMenuItem;
 	private MenuItem usersMenuItem;
-	private MenuItem processInstancesMenuItem;
+	private MenuItem caseDtosMenuItem;
 	private MenuItem propertyValuesMenuItem;
 	private MenuItem activityInstancesMenuItem;
 	private MenuItem notificationInstancesMenuItem;
@@ -58,7 +58,7 @@ public class AdminModule extends InfodocModule implements Command {
 		usersMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiUsers, new ThemeResource(InfodocTheme.iconUser), this, this.user.getUserGroup().getAccessAdminUsers());
 		
 		addSeparator(adminMenuItem);
-		processInstancesMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiProcessInstances, new ThemeResource(InfodocTheme.iconProcessInstances), this, this.user.getUserGroup().getAccessAdminProcessInstances());
+		caseDtosMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiCases, new ThemeResource(InfodocTheme.iconCases), this, this.user.getUserGroup().getAccessAdminCases());
 		propertyValuesMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiPropertyValues, new ThemeResource(InfodocTheme.iconPropertyValue), this, this.user.getUserGroup().getAccessAdminPropertyValues());
 		activityInstancesMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiActivitiesInstances, new ThemeResource(InfodocTheme.iconActivityInstance), this, this.user.getUserGroup().getAccessAdminActivityInstances());
 		notificationInstancesMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiNotificationInstances, new ThemeResource(InfodocTheme.iconNotificationInstance), this, this.user.getUserGroup().getAccessAdminNotificationInstances());
@@ -88,8 +88,8 @@ public class AdminModule extends InfodocModule implements Command {
 		} else if(selectedItem.equals(userGroupsMenuItem)) {
 			addUserGroupsTab();
 			
-		} else if(selectedItem.equals(processInstancesMenuItem)) {
-			addProcessInstancesTab();
+		} else if(selectedItem.equals(caseDtosMenuItem)) {
+			addCasesTab();
 			
 		} else if(selectedItem.equals(propertyValuesMenuItem)) {
 			addPropertyValuesTab();
@@ -135,10 +135,10 @@ public class AdminModule extends InfodocModule implements Command {
 		mdiWindow.addWorkbenchContent(crud, InfodocConstants.uiUserGroups, null, true, false);
 	}
 
-	private void addProcessInstancesTab() {
-		CrudComponent<ProcessInstance> crud = new CrudComponent<ProcessInstance>(ProcessInstance.class, new InfodocFieldFactory());
+	private void addCasesTab() {
+		CrudComponent<Case> crud = new CrudComponent<Case>(Case.class, new InfodocFieldFactory());
 		crud.setSizeFull();
-		mdiWindow.addWorkbenchContent(crud, InfodocConstants.uiProcessInstances, null, true, false);
+		mdiWindow.addWorkbenchContent(crud, InfodocConstants.uiCases, null, true, false);
 	}
 
 	private void addPropertyValuesTab() {

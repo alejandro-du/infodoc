@@ -6,12 +6,12 @@ import infodoc.core.dto.Classification;
 import infodoc.core.dto.ClassificationValue;
 import infodoc.core.dto.Numeration;
 import infodoc.core.dto.Notification;
-import infodoc.core.dto.Process;
+import infodoc.core.dto.Form;
 import infodoc.core.dto.Property;
 import infodoc.core.dto.User;
 import infodoc.core.dto.Validation;
-import infodoc.core.ui.comun.InfodocModule;
-import infodoc.core.ui.comun.InfodocTheme;
+import infodoc.core.ui.common.InfodocModule;
+import infodoc.core.ui.common.InfodocTheme;
 import infodoc.core.ui.fieldfactory.InfodocFieldFactory;
 
 import com.vaadin.terminal.ThemeResource;
@@ -24,7 +24,7 @@ import enterpriseapp.ui.window.MDIWindow;
 public class ConfigurationModule extends InfodocModule implements Command {
 	
 	private static final long serialVersionUID = 1L;
-	private MenuItem processesMenuItem;
+	private MenuItem formsMenuItem;
 	private MenuItem numerationsMenuItem;
 	private MenuItem propertiesMenuItem;
 	private MenuItem validationsMenuItem;
@@ -41,7 +41,7 @@ public class ConfigurationModule extends InfodocModule implements Command {
 		
 		MenuItem configurationMenuItem = mdiWindow.getMenuBar().addItem(InfodocConstants.uiConfiguration, new ThemeResource(InfodocTheme.iconConfiguration), null);
 		
-		processesMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiProcesses, new ThemeResource(InfodocTheme.iconProcess), this, theUser.getUserGroup().getAccessConfigProcesses());
+		formsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiForms, new ThemeResource(InfodocTheme.iconForm), this, theUser.getUserGroup().getAccessConfigForms());
 		numerationsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiNumerations, new ThemeResource(InfodocTheme.iconNumeration), this, theUser.getUserGroup().getAccessConfigNumeration());
 		propertiesMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiProperties, new ThemeResource(InfodocTheme.iconProperty), this, theUser.getUserGroup().getAccessConfigProperties());
 		validationsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiValidations, new ThemeResource(InfodocTheme.iconValidationInstance), this, theUser.getUserGroup().getAccessConfigValidations());
@@ -62,8 +62,8 @@ public class ConfigurationModule extends InfodocModule implements Command {
 	
 	@Override
 	public void menuSelected(MenuItem selectedItem) {
-		if(selectedItem.equals(processesMenuItem)) {
-			addProcessesTab();
+		if(selectedItem.equals(formsMenuItem)) {
+			addFormsTab();
 			
 		} else if(selectedItem.equals(numerationsMenuItem)) {
 			addNumerationsTab();
@@ -88,10 +88,10 @@ public class ConfigurationModule extends InfodocModule implements Command {
 		}
 	}
 	
-	private void addProcessesTab() {
-		CrudComponent<Process> crud = new CrudComponent<Process>(Process.class, new InfodocFieldFactory());
+	private void addFormsTab() {
+		CrudComponent<Form> crud = new CrudComponent<Form>(Form.class, new InfodocFieldFactory());
 		crud.setSizeFull();
-		mdiWindow.addWorkbenchContent(crud, InfodocConstants.uiProcesses, null, true, false);
+		mdiWindow.addWorkbenchContent(crud, InfodocConstants.uiForms, null, true, false);
 	}
 	
 	private void addNumerationsTab() {

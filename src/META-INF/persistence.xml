@@ -12,8 +12,8 @@
 		<class>infodoc.core.dto.Notification</class>
 		<class>infodoc.core.dto.NotificationInstance</class>
 		<class>infodoc.core.dto.Numeration</class>
-		<class>infodoc.core.dto.Process</class>
-		<class>infodoc.core.dto.ProcessInstance</class>
+		<class>infodoc.core.dto.Form</class>
+		<class>infodoc.core.dto.Case</class>
 		<class>infodoc.core.dto.Property</class>
 		<class>infodoc.core.dto.PropertyValue</class>
 		<class>infodoc.core.dto.User</class>

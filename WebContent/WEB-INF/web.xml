@@ -15,7 +15,7 @@
 	</context-param>
 
 	<listener>
-		<listener-class>infodoc.ui.comun.InfodocContextListener</listener-class>
+		<listener-class>infodoc.ui.common.InfodocContextListener</listener-class>
 	</listener>
 	
 	<listener>
@@ -28,7 +28,7 @@
 		<init-param>
 			<description>Vaadin application class to start</description>
 			<param-name>application</param-name>
-			<param-value>infodoc.ui.comun.InfodocApplication</param-value>
+			<param-value>infodoc.ui.common.InfodocApplication</param-value>
 		</init-param>
 		<init-param>
 			<description>Application widgetset</description>

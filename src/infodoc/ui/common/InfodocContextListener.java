@@ -1,4 +1,4 @@
-package infodoc.ui.comun;
+package infodoc.ui.common;
 
 import infodoc.core.container.InfodocContainerFactory;
 
