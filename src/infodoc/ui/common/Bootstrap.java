@@ -11,7 +11,7 @@ public class Bootstrap {
 	
 	public static void run() {
 		if(InfodocContainerFactory.getUserGroupContainer().count() == 0) {
-			LoggerFactory.getLogger(Bootstrap.class).info("Creating user grops...");
+			LoggerFactory.getLogger(Bootstrap.class).info("Creating user groups...");
 			createUserGroups();
 			LoggerFactory.getLogger(Bootstrap.class).info("User groups created.");
 		}
@@ -51,9 +51,10 @@ public class Bootstrap {
 
 	protected static void createUsers() {
 		User user = new User();
-		user.setLogin("test@test.test");
+		user.setLogin("admin@test.com");
 		user.setPassword("test");
 		user.setDisabled(false);
+		user.setExpirePassword(false);
 		user.setName("test");
 		user.setLastName("test");
 		user.setUserGroup(InfodocContainerFactory.getUserGroupContainer().listAll().get(0));
