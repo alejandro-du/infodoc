@@ -120,11 +120,11 @@ public class AdminModule extends InfodocModule implements Command {
 	private void addUsersTab() {
 		CrudComponent<User> crud = new CrudBuilder<User>(User.class)
 			.setFieldFactory(new InfodocFieldFactory())
-			.setShowDeleteButton(user.getUserGroup().getCanCreateAndModifyUsers())
-			.setShowNewButton(user.getUserGroup().getCanCreateAndModifyUsers())
+			.setShowDeleteButton(user.getUserGroup().getCanCreateAndDeleteUsers())
+			.setShowNewButton(user.getUserGroup().getCanCreateAndDeleteUsers())
 			.build();
 		
-		crud.setReadOnly(!user.getUserGroup().getCanCreateAndModifyUsers());
+		crud.setReadOnly(!user.getUserGroup().getCanCreateAndDeleteUsers());
 		crud.setSizeFull();
 		mdiWindow.addWorkbenchContent(crud, InfodocConstants.uiUsers, null, true, false);
 	}

@@ -29,7 +29,7 @@ public class Bootstrap {
 		userGroup.setAccessAdminModule(true);
 		userGroup.setAccessAdminUserGroups(true);
 		userGroup.setAccessAdminUsers(true);
-		userGroup.setCanCreateAndModifyUsers(true);
+		userGroup.setCanCreateAndDeleteUsers(true);
 		userGroup.setAccessLogFiles(true);
 		userGroup.setAccessAuditLog(true);
 		
