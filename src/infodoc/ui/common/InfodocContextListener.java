@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import enterpriseapp.DefaultContextListener;
+import enterpriseapp.Utils;
 
 public class InfodocContextListener extends DefaultContextListener {
 	
@@ -25,9 +26,18 @@ public class InfodocContextListener extends DefaultContextListener {
 	
 	@Override
 	public String[] getPropertiesFileNames() {
+		Utils.loadProperties("/infodoc-configuration.properties", getPassword());
+		String language = Utils.getProperty("infodoc.language"); // do not use InfodocConstants here, as it has final static members
+		
+		if(language != null && !language.isEmpty()) {
+			language = "-" + language;
+		} else {
+			language = "";
+		}
+		
 		return new String[] {
-			"/defaultConfiguration.properties",
-			"/infodoc-ui.properties",
+			"/defaultConfiguration" + language + ".properties",
+			"/infodoc-ui" + language + ".properties",
 			"/infodoc-configuration.properties",
 			"/infodoc-custom.properties"
 		};
