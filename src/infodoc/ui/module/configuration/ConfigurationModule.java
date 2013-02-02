@@ -41,23 +41,23 @@ public class ConfigurationModule extends InfodocModule implements Command {
 		
 		MenuItem configurationMenuItem = mdiWindow.getMenuBar().addItem(InfodocConstants.uiConfiguration, new ThemeResource(InfodocTheme.iconConfiguration), null);
 		
-		formsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiForms, new ThemeResource(InfodocTheme.iconForm), this, theUser.getUserGroup().getAccessConfigForms());
-		numerationsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiNumerations, new ThemeResource(InfodocTheme.iconNumeration), this, theUser.getUserGroup().getAccessConfigNumeration());
-		propertiesMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiProperties, new ThemeResource(InfodocTheme.iconProperty), this, theUser.getUserGroup().getAccessConfigProperties());
-		validationsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiValidations, new ThemeResource(InfodocTheme.iconValidationInstance), this, theUser.getUserGroup().getAccessConfigValidations());
+		formsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiForms, new ThemeResource(InfodocTheme.iconForm), this, theUser.getUserGroup().isAccessConfigForms());
+		numerationsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiNumerations, new ThemeResource(InfodocTheme.iconNumeration), this, theUser.getUserGroup().isAccessConfigNumeration());
+		propertiesMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiProperties, new ThemeResource(InfodocTheme.iconProperty), this, theUser.getUserGroup().isAccessConfigProperties());
+		validationsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiValidations, new ThemeResource(InfodocTheme.iconValidationInstance), this, theUser.getUserGroup().isAccessConfigValidations());
 		
 		configurationMenuItem.addSeparator();
-		classificationsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiClassifications, new ThemeResource(InfodocTheme.iconClassification), this, theUser.getUserGroup().getAccessConfigClassifications());
-		classificationValuesMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiClassificationValues, new ThemeResource(InfodocTheme.iconClassificationInstance), this, theUser.getUserGroup().getAccessConfigClassificationValues());
+		classificationsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiClassifications, new ThemeResource(InfodocTheme.iconClassification), this, theUser.getUserGroup().isAccessConfigClassifications());
+		classificationValuesMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiClassificationValues, new ThemeResource(InfodocTheme.iconClassificationInstance), this, theUser.getUserGroup().isAccessConfigClassificationValues());
 		
 		configurationMenuItem.addSeparator();
-		activitiesMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiActivities, new ThemeResource(InfodocTheme.iconActivity), this, theUser.getUserGroup().getAccessConfigActivities());
-		notificationsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiNotifications, new ThemeResource(InfodocTheme.iconNotification), this, theUser.getUserGroup().getAccessConfigNotifications());
+		activitiesMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiActivities, new ThemeResource(InfodocTheme.iconActivity), this, theUser.getUserGroup().isAccessConfigActivities());
+		notificationsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiNotifications, new ThemeResource(InfodocTheme.iconNotification), this, theUser.getUserGroup().isAccessConfigNotifications());
 	}
 
 	@Override
 	public boolean userCanAccess(enterpriseapp.hibernate.dto.User user) {
-		return ((User) user).getUserGroup().getAccesoConfigModule();
+		return ((User) user).getUserGroup().isAccesoConfigModule();
 	}
 	
 	@Override

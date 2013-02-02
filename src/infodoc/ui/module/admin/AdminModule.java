@@ -54,30 +54,30 @@ public class AdminModule extends InfodocModule implements Command {
 		
 		MenuItem adminMenuItem = mdiWindow.getMenuBar().addItem(InfodocConstants.uiAdmin, new ThemeResource(InfodocTheme.iconAdmin), null);
 		
-		userGroupsMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiUserGroups, new ThemeResource(InfodocTheme.iconUserGroup), this, this.user.getUserGroup().getAccessAdminUserGroups());
-		usersMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiUsers, new ThemeResource(InfodocTheme.iconUser), this, this.user.getUserGroup().getAccessAdminUsers());
+		userGroupsMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiUserGroups, new ThemeResource(InfodocTheme.iconUserGroup), this, this.user.getUserGroup().isAccessAdminUserGroups());
+		usersMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiUsers, new ThemeResource(InfodocTheme.iconUser), this, this.user.getUserGroup().isAccessAdminUsers());
 		
 		addSeparator(adminMenuItem);
-		caseDtosMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiCases, new ThemeResource(InfodocTheme.iconCases), this, this.user.getUserGroup().getAccessAdminCases());
-		propertyValuesMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiPropertyValues, new ThemeResource(InfodocTheme.iconPropertyValue), this, this.user.getUserGroup().getAccessAdminPropertyValues());
-		activityInstancesMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiActivitiesInstances, new ThemeResource(InfodocTheme.iconActivityInstance), this, this.user.getUserGroup().getAccessAdminActivityInstances());
-		notificationInstancesMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiNotificationInstances, new ThemeResource(InfodocTheme.iconNotificationInstance), this, this.user.getUserGroup().getAccessAdminNotificationInstances());
+		caseDtosMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiCases, new ThemeResource(InfodocTheme.iconCases), this, this.user.getUserGroup().isAccessAdminCases());
+		propertyValuesMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiPropertyValues, new ThemeResource(InfodocTheme.iconPropertyValue), this, this.user.getUserGroup().isAccessAdminPropertyValues());
+		activityInstancesMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiActivitiesInstances, new ThemeResource(InfodocTheme.iconActivityInstance), this, this.user.getUserGroup().isAccessAdminActivityInstances());
+		notificationInstancesMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiNotificationInstances, new ThemeResource(InfodocTheme.iconNotificationInstance), this, this.user.getUserGroup().isAccessAdminNotificationInstances());
 		
 		addSeparator(adminMenuItem);
-		hqlQueryItem = addMenuItem(adminMenuItem, InfodocConstants.uiHqlQuery, new ThemeResource(InfodocTheme.iconDatabase), this, this.user.getUserGroup().getAccessHqlQuery());
-		javaReportsItem = addMenuItem(adminMenuItem, InfodocConstants.uiJavaReports, new ThemeResource(InfodocTheme.iconReport), this, this.user.getUserGroup().getAccessAdminJavaReports());
-		hqlReportsItem = addMenuItem(adminMenuItem, InfodocConstants.uiHqlReports, new ThemeResource(InfodocTheme.iconReport), this, this.user.getUserGroup().getAccessAdminHqlReports());
+		hqlQueryItem = addMenuItem(adminMenuItem, InfodocConstants.uiHqlQuery, new ThemeResource(InfodocTheme.iconDatabase), this, this.user.getUserGroup().isAccessHqlQuery());
+		javaReportsItem = addMenuItem(adminMenuItem, InfodocConstants.uiJavaReports, new ThemeResource(InfodocTheme.iconReport), this, this.user.getUserGroup().isAccessAdminJavaReports());
+		hqlReportsItem = addMenuItem(adminMenuItem, InfodocConstants.uiHqlReports, new ThemeResource(InfodocTheme.iconReport), this, this.user.getUserGroup().isAccessAdminHqlReports());
 		
 		addSeparator(adminMenuItem);
-		logMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiLog, new ThemeResource(InfodocTheme.iconLog), this, this.user.getUserGroup().getAccessLogFiles());
-		auditLogMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiAuditLog, new ThemeResource(InfodocTheme.iconAuditLog), this, this.user.getUserGroup().getAccessAuditLog());
+		logMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiLog, new ThemeResource(InfodocTheme.iconLog), this, this.user.getUserGroup().isAccessLogFiles());
+		auditLogMenuItem = addMenuItem(adminMenuItem, InfodocConstants.uiAuditLog, new ThemeResource(InfodocTheme.iconAuditLog), this, this.user.getUserGroup().isAccessAuditLog());
 		
 		removeEndingSeparator(adminMenuItem);
 	}
 
 	@Override
 	public boolean userCanAccess(enterpriseapp.hibernate.dto.User user) {
-		return ((User) user).getUserGroup().getAccessAdminModule();
+		return ((User) user).getUserGroup().isAccessAdminModule();
 	}
 	
 	@Override
@@ -120,11 +120,11 @@ public class AdminModule extends InfodocModule implements Command {
 	private void addUsersTab() {
 		CrudComponent<User> crud = new CrudBuilder<User>(User.class)
 			.setFieldFactory(new InfodocFieldFactory())
-			.setShowDeleteButton(user.getUserGroup().getCanCreateAndDeleteUsers())
-			.setShowNewButton(user.getUserGroup().getCanCreateAndDeleteUsers())
+			.setShowDeleteButton(user.getUserGroup().isCanCreateAndDeleteUsers())
+			.setShowNewButton(user.getUserGroup().isCanCreateAndDeleteUsers())
 			.build();
 		
-		crud.setReadOnly(!user.getUserGroup().getCanCreateAndDeleteUsers());
+		crud.setReadOnly(!user.getUserGroup().isCanCreateAndDeleteUsers());
 		crud.setSizeFull();
 		mdiWindow.addWorkbenchContent(crud, InfodocConstants.uiUsers, null, true, false);
 	}
