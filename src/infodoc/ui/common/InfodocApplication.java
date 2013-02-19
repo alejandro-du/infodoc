@@ -9,11 +9,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import enterpriseapp.EnterpriseApplication;
 import enterpriseapp.hibernate.ContainerFactory;
 import enterpriseapp.ui.window.Module;
 
 public class InfodocApplication extends EnterpriseApplication implements Serializable {
+	
+	private static final Logger logger = LoggerFactory.getLogger(InfodocApplication.class);
 	
 	private static final String BUILT_IN_MODULES = "infodoc.ui.module.configuration.ConfigurationModule,infodoc.ui.module.admin.AdminModule,infodoc.ui.module.help.HelpModule";
 
@@ -48,13 +53,14 @@ public class InfodocApplication extends EnterpriseApplication implements Seriali
 		String modulesString = BUILT_IN_MODULES;
 		
 		if(InfodocConstants.infodocModules != null && !InfodocConstants.infodocModules.isEmpty()) {
-			modulesString = InfodocConstants.infodocModules + "," + modulesString.replace("" , "");
+			modulesString = InfodocConstants.infodocModules.replace(" " , "") + "," + modulesString;
 		}
 		
 		String[] moduleClasses = modulesString.split(",");
 		
 		for(String moduleClass : moduleClasses) {
 			try {
+				logger.info("Loading module " + moduleClass + "...");
 				Module module = (Module) Class.forName(moduleClass).newInstance();
 				modules.add(module);
 				

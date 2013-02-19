@@ -27,6 +27,7 @@ public class InfodocContextListener extends DefaultContextListener {
 	@Override
 	public String[] getPropertiesFileNames() {
 		Utils.loadProperties("/infodoc-configuration.properties", getPassword());
+		Utils.loadProperties("/infodoc-custom.properties", getPassword());
 		String language = Utils.getProperty("infodoc.language"); // do not use InfodocConstants here, as it has final static members
 		
 		if(language != null && !language.isEmpty()) {
