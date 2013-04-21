@@ -24,8 +24,8 @@ import enterpriseapp.ui.window.MDIWindow;
 public class ConfigurationModule extends InfodocModule implements Command {
 	
 	private static final long serialVersionUID = 1L;
-	private MenuItem formsMenuItem;
 	private MenuItem numerationsMenuItem;
+	private MenuItem formsMenuItem;
 	private MenuItem propertiesMenuItem;
 	private MenuItem validationsMenuItem;
 	private MenuItem classificationsMenuItem;
@@ -41,8 +41,8 @@ public class ConfigurationModule extends InfodocModule implements Command {
 		
 		MenuItem configurationMenuItem = mdiWindow.getMenuBar().addItem(InfodocConstants.uiConfiguration, new ThemeResource(InfodocTheme.iconConfiguration), null);
 		
-		formsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiForms, new ThemeResource(InfodocTheme.iconForm), this, theUser.getUserGroup().isAccessConfigForms());
 		numerationsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiNumerations, new ThemeResource(InfodocTheme.iconNumeration), this, theUser.getUserGroup().isAccessConfigNumeration());
+		formsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiForms, new ThemeResource(InfodocTheme.iconForm), this, theUser.getUserGroup().isAccessConfigForms());
 		propertiesMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiProperties, new ThemeResource(InfodocTheme.iconProperty), this, theUser.getUserGroup().isAccessConfigProperties());
 		validationsMenuItem = addMenuItem(configurationMenuItem, InfodocConstants.uiValidations, new ThemeResource(InfodocTheme.iconValidationInstance), this, theUser.getUserGroup().isAccessConfigValidations());
 		
@@ -62,11 +62,11 @@ public class ConfigurationModule extends InfodocModule implements Command {
 	
 	@Override
 	public void menuSelected(MenuItem selectedItem) {
-		if(selectedItem.equals(formsMenuItem)) {
-			addFormsTab();
-			
-		} else if(selectedItem.equals(numerationsMenuItem)) {
+		if(selectedItem.equals(numerationsMenuItem)) {
 			addNumerationsTab();
+		
+		} else if(selectedItem.equals(formsMenuItem)) {
+			addFormsTab();
 			
 		} else if(selectedItem.equals(propertiesMenuItem)) {
 			addPropertiesTab();
