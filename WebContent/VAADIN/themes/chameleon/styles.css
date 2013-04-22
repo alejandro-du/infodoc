@@ -1,5 +1,5 @@
-.v-theme-version:after {content:"6_8_0";}
-.v-theme-version-6_8_0 {display: none;}
+.v-theme-version:after {content:"6_8_8";}
+.v-theme-version-6_8_8 {display: none;}
 /* Automatically compiled css file from subdirectories. */
 
 .v-absolutelayout-wrapper {
@@ -483,15 +483,20 @@ div.v-app-loading {
 
 .v-drag-element {
 	z-index: 60000;
-	position: absolute;
-    opacity: 0.5;
-    filter: alpha(opacity=50);
-    cursor: default;
+	/* override any other position: properties */
+	position: absolute !important;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	cursor: default;
 }
 
 .v-scrollable {
 	overflow: auto;
 }
+/* Enable kinetic scrolling on Mobile Safari 6 */ 
+.v-ios.v-sa6 .v-scrollable { 
+        -webkit-overflow-scrolling: touch; 
+} 
 
 .v-csslayout {
 	overflow: hidden;
@@ -803,31 +808,52 @@ div.v-app-loading {
 .v-formlayout-captioncell .v-caption {
 	overflow: visible;
 }
-.v-formlayout-spacing .v-formlayout-row .v-formlayout-captioncell, 
-.v-formlayout-spacing .v-formlayout-row .v-formlayout-contentcell,
-.v-formlayout-spacing .v-formlayout-row .v-formlayout-errorcell {
+.v-formlayout-spacing > tbody > .v-formlayout-row > .v-formlayout-captioncell, 
+.v-formlayout-spacing > tbody > .v-formlayout-row > .v-formlayout-contentcell,
+.v-formlayout-spacing > tbody > .v-formlayout-row > .v-formlayout-errorcell {
 	padding-top: 6px;
 }
-.v-formlayout-spacing .v-formlayout-firstrow .v-formlayout-captioncell, 
-.v-formlayout-spacing .v-formlayout-firstrow .v-formlayout-contentcell,
-.v-formlayout-spacing .v-formlayout-firstrow .v-formlayout-errorcell {
+.v-formlayout-spacing > tbody > .v-formlayout-firstrow > .v-formlayout-captioncell, 
+.v-formlayout-spacing > tbody > .v-formlayout-firstrow > .v-formlayout-contentcell,
+.v-formlayout-spacing > tbody > .v-formlayout-firstrow > .v-formlayout-errorcell {
 	padding-top: 0;
 }
-.v-formlayout-margin-top .v-formlayout-firstrow .v-formlayout-captioncell, 
-.v-formlayout-margin-top .v-formlayout-firstrow .v-formlayout-contentcell,
-.v-formlayout-margin-top .v-formlayout-firstrow .v-formlayout-errorcell {
+.v-formlayout-margin-top > tbody > .v-formlayout-firstrow > .v-formlayout-captioncell, 
+.v-formlayout-margin-top > tbody > .v-formlayout-firstrow > .v-formlayout-contentcell,
+.v-formlayout-margin-top > tbody > .v-formlayout-firstrow > .v-formlayout-errorcell {
 	padding-top: 12px;
 }
-.v-formlayout-margin-bottom .v-formlayout-lastrow .v-formlayout-captioncell,
-.v-formlayout-margin-bottom .v-formlayout-lastrow .v-formlayout-contentcell,
-.v-formlayout-margin-bottom .v-formlayout-lastrow .v-formlayout-errorcell {
+.v-formlayout-margin-bottom > tbody > .v-formlayout-lastrow > .v-formlayout-captioncell,
+.v-formlayout-margin-bottom > tbody > .v-formlayout-lastrow > .v-formlayout-contentcell,
+.v-formlayout-margin-bottom > tbody > .v-formlayout-lastrow > .v-formlayout-errorcell {
 	padding-bottom: 12px;
 }
-.v-formlayout-margin-left .v-formlayout-captioncell {
+.v-ie6 .v-formlayout-spacing .v-formlayout-row .v-formlayout-captioncell, 
+.v-ie6 .v-formlayout-spacing .v-formlayout-row .v-formlayout-contentcell,
+.v-ie6 .v-formlayout-spacing .v-formlayout-row .v-formlayout-errorcell {
+	padding-top: expression(/v-formlayout-spacing/.test(this.parentNode.parentNode.parentNode.className) ? "6px" : "0px");
+}
+.v-ie6 .v-formlayout-margin-top .v-formlayout-row .v-formlayout-captioncell, 
+.v-ie6 .v-formlayout-margin-top .v-formlayout-row .v-formlayout-contentcell,
+.v-ie6 .v-formlayout-margin-top .v-formlayout-row .v-formlayout-errorcell {
+	padding-top: expression((/v-formlayout-firstrow/.test(this.parentNode.className) && /v-formlayout-margin-top/.test(this.parentNode.parentNode.parentNode.className)) ? "12px" : (/v-formlayout-spacing/.test(this.parentNode.parentNode.parentNode.className) ? "6px" : "0px"));
+}
+.v-ie6 .v-formlayout-margin-bottom .v-formlayout-row .v-formlayout-captioncell,
+.v-ie6 .v-formlayout-margin-bottom .v-formlayout-row .v-formlayout-contentcell,
+.v-ie6 .v-formlayout-margin-bottom .v-formlayout-row .v-formlayout-errorcell {
+	padding-bottom: expression((/v-formlayout-lastrow/.test(this.parentNode.className) && /v-formlayout-margin-bottom/.test(this.parentNode.parentNode.parentNode.className)) ? "12px" : "0px");
+}
+.v-formlayout-margin-left > tbody > .v-formlayout-row > .v-formlayout-captioncell {
 	padding-left: 12px;
 } 
-.v-formlayout-margin-right .v-formlayout-contentcell {
+.v-formlayout-margin-right > tbody > .v-formlayout-row > .v-formlayout-contentcell {
 	padding-right: 12px;
+}
+.v-ie6 .v-formlayout-margin-left .v-formlayout-row .v-formlayout-captioncell {
+	padding-left: expression(/v-formlayout-margin-left/.test(this.parentNode.parentNode.parentNode.className) ? "12px" : "0px");
+}
+.v-ie6 .v-formlayout-margin-right .v-formlayout-row .v-formlayout-contentcell {
+	padding-right: expression(/v-formlayout-margin-right/.test(this.parentNode.parentNode.parentNode.className) ? "12px" : "0px");
 }
 .v-formlayout-captioncell .v-caption .v-required-field-indicator {
 	float: none;
@@ -1780,6 +1806,11 @@ div.v-progressindicator-indeterminate-disabled {
 .v-off {
 	color: #ddd;
 }
+
+.v-table .v-checkbox {
+	display: inline-block;
+}
+
 /*************************************
  * Drag'n'drop styles
  *************************************/
@@ -2010,7 +2041,9 @@ textarea.v-textarea-readonly:focus {
 	background: #fff;
 	border: none;
 }
-
+.v-richtextarea .gwt-HTML {
+	height: 100%;
+}
 .v-richtextarea .gwt-RichTextToolbar {
 	white-space: nowrap;
 	background: #959595 url(../base/textfield/img/richtext-toolbar-bg.png) repeat-x 0 -42px;
@@ -2236,13 +2269,13 @@ div.v-tree-node-leaf {
     height: 10px;
     /* defines the amount of indent per level */
     width: 18px;
-}
-.v-ie7 .v-treetable-treespacer{
-	height: 100%; /* #7388 */
+    position: absolute;
+    left: 0;
+    top: 5px;
 }
 
 .v-treetable-node-closed {
-    background: url(../base/treetable/img/arrow-right.png) right center no-repeat;
+    background: url(../base/treetable/img/arrow-right.png) right top no-repeat;
 }
 
 .v-ie6 .v-treetable-node-closed {
@@ -2250,7 +2283,7 @@ div.v-tree-node-leaf {
 } 
 
 .v-treetable-node-open {
-    background: url(../base/treetable/img/arrow-down.png) right center no-repeat;
+    background: url(../base/treetable/img/arrow-down.png) right top no-repeat;
 }
 
 .v-ie6 .v-treetable-node-open {
@@ -2266,6 +2299,10 @@ div.v-tree-node-leaf {
 .v-treetable .v-table-row-odd .v-table-cell-content {
     position: relative;
     z-index: 10;
+}
+
+.v-treetable .v-table-cell-wrapper {
+	position: relative;
 }
 
 .v-treetable .v-table-body .v-table-table .v-table-row-animating {
