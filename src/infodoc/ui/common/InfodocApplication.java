@@ -48,7 +48,7 @@ public class InfodocApplication extends EnterpriseApplication implements Seriali
 		String modulesString = BUILT_IN_MODULES;
 		
 		if(InfodocConstants.infodocModules != null && !InfodocConstants.infodocModules.isEmpty()) {
-			modulesString = InfodocConstants.infodocModules.replace(" " , "") + "," + modulesString;
+			modulesString = InfodocConstants.infodocModules.replace(" " , "").replace("BUILT_IN_MODULES", modulesString);
 		}
 		
 		String[] moduleClasses = modulesString.split(",");
