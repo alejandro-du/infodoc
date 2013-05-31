@@ -5,7 +5,10 @@
 	<display-name>Infodoc Pro</display-name>
 	
 	<session-config>
-		<session-timeout>30</session-timeout>
+		<!--
+			Don't use <session-timeout> here. Use app.sessionTimeout property in configuration files.
+			<session-timeout>30</session-timeout>
+		-->
 	</session-config>
 
 	<context-param>
