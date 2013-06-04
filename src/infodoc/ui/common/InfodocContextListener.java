@@ -21,7 +21,8 @@ public class InfodocContextListener extends DefaultContextListener {
 		super.contextInitialized(contextEvent);
 		logger.info("Time zone: " + TimeZone.getDefault().getDisplayName() + " (" + TimeZone.getDefault().getID() + " " + TimeZone.getDefault().getRawOffset() + ")");
 		
-		InfodocContainerFactory.getNotificationInstanceContainer().schedulePendingInstances();
+		logger.info("Running bootstrap...");
+		Bootstrap.run();
     }
 	
 	@Override

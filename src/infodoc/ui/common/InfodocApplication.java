@@ -1,7 +1,6 @@
 package infodoc.ui.common;
 
 import infodoc.core.InfodocConstants;
-import infodoc.core.container.InfodocContainerFactory;
 import infodoc.core.dto.User;
 import infodoc.core.ui.common.InfodocMainWindow;
 
@@ -10,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import enterpriseapp.EnterpriseApplication;
-import enterpriseapp.hibernate.ContainerFactory;
 import enterpriseapp.ui.window.Module;
 
 public class InfodocApplication extends EnterpriseApplication implements Serializable {
@@ -19,13 +17,10 @@ public class InfodocApplication extends EnterpriseApplication implements Seriali
 
 	private static final long serialVersionUID = 1L;
 	
-	private static boolean firstInit = true;
-	
 	@Override
 	public void init() {
 		super.init();
 		
-		ContainerFactory.init(new InfodocContainerFactory());
 		setTheme("infodoc");
 		
 		User user = (User) getUser();
@@ -34,16 +29,15 @@ public class InfodocApplication extends EnterpriseApplication implements Seriali
 			setTimeZoneId(user.getTimeZone());
 		}
 		
-		InfodocMainWindow mainWindow = new InfodocMainWindow((User) getUser(), getModules((User) getUser()));
+		InfodocMainWindow mainWindow = new InfodocMainWindow((User) getUser(), getModules());
 		setMainWindow(mainWindow);
-		
-		if(firstInit) {
-			Bootstrap.run();
-			firstInit = false;
-		}
+	}
+	
+	public static void initializeModules() {
+		getModules();
 	}
 
-	public List<Module> getModules(User user) {
+	public static List<Module> getModules() {
 		ArrayList<Module> modules = new ArrayList<Module>();
 		String modulesString = BUILT_IN_MODULES;
 		

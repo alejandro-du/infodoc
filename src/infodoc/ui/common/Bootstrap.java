@@ -2,24 +2,37 @@ package infodoc.ui.common;
 
 import infodoc.core.InfodocConstants;
 import infodoc.core.container.InfodocContainerFactory;
-import infodoc.core.dto.UserGroup;
 import infodoc.core.dto.User;
+import infodoc.core.dto.UserGroup;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import enterpriseapp.hibernate.ContainerFactory;
 
 public class Bootstrap {
 	
+	private static final Logger logger = LoggerFactory.getLogger(Bootstrap.class);
+	
 	public static void run() {
+		logger.info("Initializing container factory...");
+		ContainerFactory.init(new InfodocContainerFactory());
+		
+		logger.info("Initializing modules...");
+		InfodocApplication.initializeModules();
+		
 		if(InfodocContainerFactory.getUserGroupContainer().count() == 0) {
 			LoggerFactory.getLogger(Bootstrap.class).info("Creating user groups...");
 			createUserGroups();
-			LoggerFactory.getLogger(Bootstrap.class).info("User groups created.");
 		}
+		
 		if(InfodocContainerFactory.getUserContainer().count() == 0) {
 			LoggerFactory.getLogger(Bootstrap.class).info("Creating users...");
 			createUsers();
-			LoggerFactory.getLogger(Bootstrap.class).info("Users created.");
 		}
+		
+		logger.info("Scheduling pending notification instances...");
+		InfodocContainerFactory.getNotificationInstanceContainer().schedulePendingInstances();
 	}
 	
 	protected static void createUserGroups() {
