@@ -37,12 +37,10 @@ public class AboutWindow extends Window {
 				"<br/>License granted to:" +
 				"<pre><small><span style='margin-left: 20px;'>" + InfodocConstants.infodocCompanyName + "</span>" + 
 				(InfodocConstants.infodocCompanyId == null ? "" : "<br/><span style='margin-left: 20px;'> " + InfodocConstants.infodocCompanyId  + "</span>") +
-				(InfodocConstants.infodocCompanyAddress == null ? "" : "<br/><span style='margin-left: 20px;'>" + InfodocConstants.infodocCompanyAddress + "</span></pre></small>") +
-				"<br/><br/>";
+				(InfodocConstants.infodocCompanyAddress == null ? "" : "<br/><span style='margin-left: 20px;'>" + InfodocConstants.infodocCompanyAddress + "</span></pre></small>") + "<br/><br/>";
 		
 		String lower = "<br/>Contact the developer: <a href='" + InfodocConstants.infodocDeveloperUrl + "'>" + InfodocConstants.infodocDeveloperUrl + "</a>," +
-				" <a href='mailto: alejandro.d.a@gmail.com'>alejandro.d.a@gmail.com</a>," +
-				" (+57) 318 625 8164, (+571) 430 3976. <b>All rights reserved</b>.";
+				"<br/><b>All rights reserved</b>.";
 		
 		Label topLabel = new Label(top, Label.CONTENT_XHTML);
 		Label lowerLabel = new Label(lower, Label.CONTENT_XHTML);
