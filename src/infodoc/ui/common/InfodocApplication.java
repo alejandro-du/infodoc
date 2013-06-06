@@ -17,11 +17,18 @@ public class InfodocApplication extends EnterpriseApplication implements Seriali
 
 	private static final long serialVersionUID = 1L;
 	
+	private static boolean firstStart = true;
+	
 	@Override
 	public void init() {
 		super.init();
 		
 		setTheme("infodoc");
+		
+		if(firstStart) {
+			firstStart = false;
+			Bootstrap.createInitialData();
+		}
 		
 		User user = (User) getUser();
 		

@@ -21,6 +21,11 @@ public class Bootstrap {
 		logger.info("Initializing modules...");
 		InfodocApplication.initializeModules();
 		
+		logger.info("Scheduling pending notification instances...");
+		InfodocContainerFactory.getNotificationInstanceContainer().schedulePendingInstances();
+	}
+	
+	public static void createInitialData() {
 		if(InfodocContainerFactory.getUserGroupContainer().count() == 0) {
 			LoggerFactory.getLogger(Bootstrap.class).info("Creating user groups...");
 			createUserGroups();
@@ -30,9 +35,6 @@ public class Bootstrap {
 			LoggerFactory.getLogger(Bootstrap.class).info("Creating users...");
 			createUsers();
 		}
-		
-		logger.info("Scheduling pending notification instances...");
-		InfodocContainerFactory.getNotificationInstanceContainer().schedulePendingInstances();
 	}
 	
 	protected static void createUserGroups() {
