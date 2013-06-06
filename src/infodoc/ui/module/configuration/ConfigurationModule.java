@@ -1,12 +1,14 @@
 package infodoc.ui.module.configuration;
 
+import java.io.Serializable;
+
 import infodoc.core.InfodocConstants;
 import infodoc.core.dto.Activity;
 import infodoc.core.dto.Classification;
 import infodoc.core.dto.ClassificationValue;
-import infodoc.core.dto.Numeration;
-import infodoc.core.dto.Notification;
 import infodoc.core.dto.Form;
+import infodoc.core.dto.Notification;
+import infodoc.core.dto.Numeration;
 import infodoc.core.dto.Property;
 import infodoc.core.dto.User;
 import infodoc.core.dto.Validation;
@@ -21,7 +23,7 @@ import com.vaadin.ui.MenuBar.MenuItem;
 import enterpriseapp.ui.crud.CrudComponent;
 import enterpriseapp.ui.window.MDIWindow;
 
-public class ConfigurationModule extends InfodocModule implements Command {
+public class ConfigurationModule extends InfodocModule implements Command, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private MenuItem numerationsMenuItem;

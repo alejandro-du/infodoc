@@ -1,5 +1,7 @@
 package infodoc.ui.module.help;
 
+import java.io.Serializable;
+
 import infodoc.core.InfodocConstants;
 import infodoc.core.ui.common.InfodocTheme;
 
@@ -12,7 +14,7 @@ import enterpriseapp.hibernate.dto.User;
 import enterpriseapp.ui.window.MDIWindow;
 import enterpriseapp.ui.window.Module;
 
-public class HelpModule implements Module, Command {
+public class HelpModule implements Module, Command, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	

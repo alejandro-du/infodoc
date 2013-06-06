@@ -15,6 +15,7 @@ import infodoc.core.ui.common.InfodocModule;
 import infodoc.core.ui.common.InfodocTheme;
 import infodoc.core.ui.fieldfactory.InfodocFieldFactory;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.vaadin.data.Property;
@@ -30,7 +31,7 @@ import enterpriseapp.ui.crud.CrudTable;
 import enterpriseapp.ui.reports.HqlQueryBrowser;
 import enterpriseapp.ui.window.MDIWindow;
 
-public class AdminModule extends InfodocModule implements Command {
+public class AdminModule extends InfodocModule implements Command, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private MenuItem userGroupsMenuItem;
