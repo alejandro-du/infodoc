@@ -6,9 +6,9 @@
 	
 	<session-config>
 		<!--
-			Don't use <session-timeout> here. Use app.sessionTimeout property in configuration files.
-			<session-timeout>30</session-timeout>
+			Use app.sessionTimeout property in configuration files.
 		-->
+		<session-timeout>30</session-timeout>
 	</session-config>
 
 	<context-param>
