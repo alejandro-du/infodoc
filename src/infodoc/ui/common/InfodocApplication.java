@@ -2,6 +2,7 @@ package infodoc.ui.common;
 
 import infodoc.core.InfodocConstants;
 import infodoc.core.dto.User;
+import infodoc.core.ui.auth.AuthService;
 import infodoc.core.ui.common.InfodocMainWindow;
 
 import java.io.Serializable;
@@ -29,6 +30,8 @@ public class InfodocApplication extends EnterpriseApplication implements Seriali
 			firstStart = false;
 			Bootstrap.createInitialData();
 		}
+		
+		AuthService.loginRememberedUser(this);
 		
 		User user = (User) getUser();
 		
